@@ -1,0 +1,41 @@
+**To:** Goldman Sachs Risk Management Department
+**Date:** February 21st, 2025
+**Subject:** Current Password Policy Risks
+
+Dear Risk Management Team,
+
+While investigating a subset of the password database and its hashes, I came across
+some worrisome findings that you I believe you ought to be privy to. As the password
+policy currently stands there are various vulnerabilities that should be addressed.
+This should be done as soon as possible to make the passwords harder to crack in the
+case of a database breach.
+
+The most apparent of the current vulnerabilities is the hashing algorithm itself. It 
+appears that the algorithm Goldman Sachs is currently using is MD5, which is quite
+outdated and has its own host of vulnerabilities. MD5 is open to collision attacks
+meaning two or more inputs could output the same hash. The algorithm itself is
+relatively quick making it all the more easier for any hackers trying to brute-force
+passwords. Alternative like Argon2 or Bcrypt should be considered, and the database
+should be migrated. This could be done at user login as we can't reverse the hashing
+to get the original password to rehash. Introducing a salt per user, or even just a
+universal hardcoded salt, would further add security to the password hashes. Adding
+a salt prevents rainbow table attacks, which are common for quickly cracking
+known password hashes.
+
+The passwords themselves are not very strong either, due to a lacking password policy.
+Many of the passwords are six characters long, which is not ideal as the current
+standard for a secure password is at the very minimum eight characters long. Some of 
+the passwords also lack numbers and special characters, this makes them all the more
+easy to crack. I reccommend that the password policy be updated to enforce users to
+create passwords of length twelve or more, and include at least two numbers and one
+special character. This would greatly strengthen the password, without making the
+passwords too complex for the users to remember. To migrate the userbase to this new
+password policy, a notification should be sent out to all users requesting they update
+their passwords to fit these new constraints. If done alongside the hashing algorithm
+migration, it will ensure a painless password database migration.
+
+In conclusion, the password database should be migrated to a new hashing algorithm
+and the password policy should be updated to enforce stronger, and thus more secure,
+passwords. Migrating the database to a new hashing algorithm can be relatively
+painless, when paired with a required password reset for all users to ensure their
+new passwords adhere to the new securer password policy.
